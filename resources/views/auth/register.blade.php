@@ -52,6 +52,7 @@
                                 @endif
                             </div>
                         </div>
+                        <input type="hidden" name="role" value="2">
 
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>

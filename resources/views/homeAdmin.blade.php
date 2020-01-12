@@ -15,6 +15,7 @@
                     @endif
 
                         <a class="btn btn-primary" href="{{ url('categories') }}">Ver las categorías</a>
+                        <a class="btn btn-primary" href="{{ url('users') }}">Ver los usuarios</a>
                 </div>
             </div>
         </div>

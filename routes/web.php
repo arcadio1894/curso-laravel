@@ -28,6 +28,11 @@ Route::group(['middleware' => 'my_auth'], function() {
     Route::get('/category/enabled', 'CategoryController@enabled');
     Route::post('/category/abled', 'CategoryController@abled');
 
+    Route::get('/users', 'UserController@index');
+    Route::post('/user/store', 'UserController@store');
+
 });
+
+
 
 
