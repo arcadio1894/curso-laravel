@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('styles')
     <link href="{{ asset('css/jquery.toast.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-<div class="container">
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <div id="modalRegistrar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -59,6 +59,7 @@
 
             </div>
             <form id="formRegistrar" data-url="{{ url('/category/store') }}">
+                {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Nombre de la categoria</label>

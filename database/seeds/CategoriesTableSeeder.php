@@ -24,5 +24,7 @@ class CategoriesTableSeeder extends Seeder
             'name' => 'Ciencia Ficcion',
             'description' => 'Genero de ciencia Ficcion'
         ]);
+
+        //factory(Category::class, 2)->create();
     }
 }
