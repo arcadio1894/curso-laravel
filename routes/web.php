@@ -31,7 +31,21 @@ Route::group(['middleware' => 'my_auth'], function() {
     Route::get('/users', 'UserController@index');
     Route::post('/user/store', 'UserController@store');
 
+    Route::get('/films', 'FilmController@index');
+    Route::get('/film/create', 'FilmController@create');
+    Route::post('/film/store', 'FilmController@store');
+    // TODO: Forma como enviamos parametros en las urls
+    Route::get('/film/edit/{id}', 'FilmController@edit');
+    
+    Route::post('/film/update', 'FilmController@update');
+    Route::post('/film/destroy', 'FilmController@destroy');
+    Route::get('/film/enabled', 'FilmController@enabled');
+    Route::post('/film/abled', 'FilmController@abled');
+
+
 });
+
+Route::get('/estados', 'FilmController@estados');
 
 
 

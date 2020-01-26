@@ -13,10 +13,9 @@ class Category extends Model
         'name', 'description',
     ];
 
-    // TODO: Creacion de relaciones
-    public function films()
-    {
-        return $this->hasMany('App\Film');
+    // TODO: Relaciones muchos a muchos
+    public function films() {
+        return $this->belongsToMany('App\film', 'category_films')->withPivot('film_id');
     }
 
     protected $dates = ['delete_at'];

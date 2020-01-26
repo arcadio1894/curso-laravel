@@ -1,8 +1,31 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('styles')
     <link href="{{ asset('css/jquery.toast.css') }}" rel="stylesheet">
 @endsection
+
+@section('activeU')
+    active open
+@endsection
+
+@section('createU')
+    active
+@endsection
+
+@section('breadcrumbs')
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="{{ url('/home') }}">Inicio</a>
+        </li>
+
+        <li>
+            <a href="{{ url('/users') }}">Usuario</a>
+        </li>
+        <li class="active">Mantenedor</li>
+    </ul><!-- /.breadcrumb -->
+@endsection
+
 
 @section('content')
 <div class="container">
@@ -12,7 +35,6 @@
                 <div class="panel-heading">LISTADO DE USUARIOS</div>
 
                 <div class="panel-body" id="body">
-                    <a class="btn btn-primary" href="{{ url('home') }}">Ir al Inicio</a>
                     <a class="btn btn-success" id="btnRegistrar">Nuevo usuario</a>
                     <a class="btn btn-warning" href="{{ url('/user/enabled') }}">Habilitar usuario(*)</a>
 

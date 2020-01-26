@@ -4,6 +4,28 @@
     <link href="{{ asset('css/jquery.toast.css') }}" rel="stylesheet">
 @endsection
 
+@section('activeC')
+    active open
+@endsection
+
+@section('createC')
+    active
+@endsection
+
+@section('breadcrumbs')
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="{{ url('/home') }}">Inicio</a>
+        </li>
+
+        <li>
+            <a href="{{ url('/categories') }}">Categorias</a>
+        </li>
+        <li class="active">Mantenedor</li>
+    </ul><!-- /.breadcrumb -->
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -12,7 +34,6 @@
                 <div class="panel-heading">LISTADO DE CATEGORÍAS</div>
 
                 <div class="panel-body" id="body">
-                    <a class="btn btn-primary" href="{{ url('home') }}">Ir al Inicio</a>
                     <a class="btn btn-success" id="btnRegistrar">Nueva categoría</a>
                     <a class="btn btn-warning" href="{{ url('/category/enabled') }}">Habilitar categoría</a>
 
