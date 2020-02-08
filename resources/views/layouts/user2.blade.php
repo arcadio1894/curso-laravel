@@ -65,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header">
     <div class="container">
         <div class="w3layouts_logo">
-            <a href="index.html"><h1>One<span>Movies</span></h1></a>
+            <a href="{{ url('/') }}"><h1>One<span>Movies</span></h1></a>
         </div>
         <div class="w3_search">
             <form action="#" method="post">
@@ -77,16 +77,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <ul>
                 <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
                 @guest
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
                 @else
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            @if( Auth::user()->password == null )
-                                <img class="nav-user-photo" src="{{ Auth::user()->avatar }}" width="20px" />
-                            @else
-                                <img class="nav-user-photo" src="{{ asset('admin/assets/images/avatars/'.Auth::user()->avatar)}}" alt="Jason's Photo" />
-                            @endif
-                            <span class="user-info">
+                            <img class="nav-user-photo" src="{{ asset('admin/assets/images/avatars/user.jpg')}}" alt="Jason's Photo" />
+								<span class="user-info">
 									<small>Welcome,</small>
                                     {{ Auth::user()->name }}
 								</span>
@@ -115,7 +111,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </li>
                 @endguest
-
             </ul>
         </div>
         <div class="clearfix"> </div>
@@ -153,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <nav>
                     <ul class="nav navbar-nav">
-                        <li class="w3_home_act"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="w3_home_act"><a href="index.html">Home</a></li>
                         <li class="dropdown active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
@@ -212,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li><a href="list.html">A - z list</a></li>
-                        <li><a href="{{ url('/rentals') }}">Alquileres</a></li>
+                        <li><a href="list.html">A - z list</a></li>
                     </ul>
                 </nav>
             </div>

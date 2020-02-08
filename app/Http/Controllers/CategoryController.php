@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         /*GOTO: Borrar cuando hagamos el middleware*/
     }
 
@@ -96,9 +96,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category = Category::with('films')->find($id);
+        $categories = Category::all();
+        $cant = count($categories)/3;
+        return view('category.show')->with(compact('category', 'categories', 'cant'));
     }
 
     /**
@@ -109,7 +112,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        
     }
 
     /**

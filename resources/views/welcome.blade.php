@@ -83,7 +83,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="w3l_sign_in_register">
             <ul>
                 <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
-                <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                @if (Route::has('login'))
+                    @auth
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                    @else
+                        <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    @endauth
+                @endif
+
             </ul>
 
         </div>
@@ -150,6 +157,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="form-group">
                                         <div >
                                             <input type="submit" value="Login">
+                                            <a href="{{ route('social.auth', 'facebook') }}" class="btn btn-primary"> Facebook </a>
+                                            <a href="{{ route('social.auth', 'google') }}" class="btn btn-warning"> Google </a>
+
                                         </div>
                                     </div>
                                 </form>
@@ -264,37 +274,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
                                 <li>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Action</a></li>
-                                            <li><a href="genres.html">Biography</a></li>
-                                            <li><a href="genres.html">Crime</a></li>
-                                            <li><a href="genres.html">Family</a></li>
-                                            <li><a href="horror.html">Horror</a></li>
-                                            <li><a href="genres.html">Romance</a></li>
-                                            <li><a href="genres.html">Sports</a></li>
-                                            <li><a href="genres.html">War</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Adventure</a></li>
-                                            <li><a href="comedy.html">Comedy</a></li>
-                                            <li><a href="genres.html">Documentary</a></li>
-                                            <li><a href="genres.html">Fantasy</a></li>
-                                            <li><a href="genres.html">Thriller</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <ul class="multi-column-dropdown">
-                                            <li><a href="genres.html">Animation</a></li>
-                                            <li><a href="genres.html">Costume</a></li>
-                                            <li><a href="genres.html">Drama</a></li>
-                                            <li><a href="genres.html">History</a></li>
-                                            <li><a href="genres.html">Musical</a></li>
-                                            <li><a href="genres.html">Psychological</a></li>
-                                        </ul>
-                                    </div>
+                                    @php
+                                        $now = 0
+                                    @endphp
+                                    @for( $i = 1; $i <= 3; $i++ )
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                            @for ( $j = $now; $j < $cant*$i; $j++ )
+                                                <li><a href="{{ url('/category/show/' . $categories[$j]->id ) }}">{{ $categories[$j]->name }}</a></li>
+                                                @php
+                                                    $now = $now + 1
+                                                @endphp
+                                            @endfor
+                                            </ul>
+                                        </div>
+                                    @endfor
+
                                     <div class="clearfix"></div>
                                 </li>
                             </ul>

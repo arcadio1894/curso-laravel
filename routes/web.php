@@ -12,12 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = \App\Category::all();
+    $cant = count($categories)/3;
+    return view('welcome')->with(compact('categories', 'cant'));
 });
 
 Auth::routes(); /* Rutas de registro y login  */
 
-Route::group(['middleware' => 'my_auth'], function() {
+Route::get('/auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+
+Route::get('/auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+
+Route::group(['middleware' => 'my_auth', 'auth'], function() {
 
     Route::get('/home', 'HomeController@index')->name('home');
     // Colocar las demas rutas que necesitan auth
@@ -42,9 +48,16 @@ Route::group(['middleware' => 'my_auth'], function() {
     Route::get('/film/enabled', 'FilmController@enabled');
     Route::post('/film/abled', 'FilmController@abled');
 
+    Route::get('/rental/addFilm/{filmId}', 'RentalController@addFilm');
+    Route::get('/rental/confirmation/{filmId}', 'RentalController@confirmationFilm');
+
+    Route::get('/rentals', 'RentalController@index');
+    Route::get('/rental/confirmationrental/{rentalId}', 'RentalController@confirmation');
+
 
 });
-
+Route::get('/category/show/{id}', 'CategoryController@show');
+Route::get('/film/show/{id}', 'FilmController@show');
 Route::get('/estados', 'FilmController@estados');
 
 

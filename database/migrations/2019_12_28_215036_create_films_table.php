@@ -21,6 +21,7 @@ class CreateFilmsTable extends Migration
             $table->integer('year');
             $table->string('url');
             $table->string('image')->nullable();
+            $table->decimal('price', 6,2)->nullable()->default(5.00);
             $table->string('imagesec')->nullable();
             $table->integer('starts');
             $table->softDeletes();

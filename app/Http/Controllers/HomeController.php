@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role_id == 2)
-            return view('homeUser');
+        if (Auth::user()->role_id == 2){
+            $categories = Category::all();
+            $cant = count($categories)/3;
+            return view('homeUser')->with(compact('categories', 'cant'));
+        }
         else
             return view('homeAdmin');
     }

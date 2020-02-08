@@ -24,5 +24,10 @@ class Film extends Model
         return $this->belongsToMany('App\Category', 'category_films')->withPivot('category_id');
     }
 
+    public function rentals()
+    {
+        return $this->belongsToMany('App\Rental', 'rental_films')->withPivot('rental_id');
+    }
+
     protected $dates = ['deleted_at'];
 }

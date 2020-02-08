@@ -7,6 +7,7 @@ use App\CategoryFilm;
 use App\Film;
 use App\FilmState;
 use App\State;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -131,9 +132,12 @@ class FilmController extends Controller
      * @param  \App\Film  $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show($id)
     {
-        //
+        $film = Film::with('categories')->find($id);
+        $categories = Category::all();
+        $cant = count($categories)/3;
+        return view('film.show')->with(compact('film', 'categories', 'cant'));
     }
 
     /**
@@ -267,7 +271,7 @@ class FilmController extends Controller
         $states = State::all();
         $film = Film::with('states')->with('categories')->find(1);
         //dd($film->states);
-        $count = 0;
+        /*$count = 0;
         foreach ( $states as $state )
         {
             foreach ( $film->states as $filmState ) {
@@ -281,6 +285,9 @@ class FilmController extends Controller
                 echo $state->name . '<br>';
             }
             $count = 0;
-        }
+        }*/
+        echo $states[1]->name;
+        $carbon = Carbon::now();
+
     }
 }
