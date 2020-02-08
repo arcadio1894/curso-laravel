@@ -58,7 +58,9 @@ Route::group(['middleware' => 'my_auth', 'auth'], function() {
 });
 Route::get('/category/show/{id}', 'CategoryController@show');
 Route::get('/film/show/{id}', 'FilmController@show');
-Route::get('/estados', 'FilmController@estados');
+
+// Test Route
+Route::get('/pdf', 'PDFController@get_pdf');
 
 
 
