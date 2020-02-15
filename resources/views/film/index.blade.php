@@ -37,8 +37,9 @@
                     <a class="btn btn-success" href="{{ url('/film/create') }}">Nueva película</a>
                     <a class="btn btn-warning" href="{{ url('/film/enabled') }}">Habilitar película</a>
                     <a class="btn btn-warning" target="_blank" href="{{ url('/pdf') }}">Exportar películas pdf</a>
+                    <a class="btn btn-warning" target="_blank" href="{{ url('/excel') }}">Exportar películas excel</a>
 
-                        <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>

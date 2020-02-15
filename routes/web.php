@@ -61,6 +61,7 @@ Route::get('/film/show/{id}', 'FilmController@show');
 
 // Test Route
 Route::get('/pdf', 'PDFController@get_pdf');
+Route::get('/excel', 'PDFController@get_excel');
 
 
 
