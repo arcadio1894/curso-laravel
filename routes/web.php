@@ -63,6 +63,17 @@ Route::get('/film/show/{id}', 'FilmController@show');
 Route::get('/pdf', 'PDFController@get_pdf');
 Route::get('/excel', 'PDFController@get_excel');
 
+// Error Handler
+Route::get('/404', 'ErrorHandlerController@errorCode404')->name('404');
+Route::get('405', ['as'=>'405', 'uses'=>'ErrorHandlerController@errorCode405']);
+
+/*
+ * Si usamos ->name('nombre') entonces en el blade usar route(nombre)
+ * Si usamos el la url pura entonces en el blade usar url(url)
+ * */
+
+
+
 
 
 
