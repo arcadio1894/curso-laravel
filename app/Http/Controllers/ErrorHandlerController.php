@@ -15,4 +15,5 @@ class ErrorHandlerController extends Controller
     {
         return view('errors.405');
     }
+
 }
