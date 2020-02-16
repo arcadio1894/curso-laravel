@@ -72,6 +72,8 @@ Route::get('405', ['as'=>'405', 'uses'=>'ErrorHandlerController@errorCode405']);
  * Si usamos el la url pura entonces en el blade usar url(url)
  * */
 
+Route::post('/email', 'MailController@sendMail');
+
 
 
 
