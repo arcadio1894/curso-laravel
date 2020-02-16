@@ -26,7 +26,7 @@ class CategoryController extends Controller
     {
         //$categories = Category::withTrashed()->get();
         //$categories = Category::onlyTrashed()->get();
-        $categories = Category::with('films')->get();
+        $categories = Category::all();
         //dd($categories);
         return view('category.index')->with(compact('categories'));
     }
