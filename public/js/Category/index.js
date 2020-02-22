@@ -202,7 +202,7 @@ function eliminarCategoria() {
                     heading: 'Éxito'
                 });
                 setTimeout(function () {
-                    location.reload();
+                    //location.reload();
                 }, 5000)
             }
         },

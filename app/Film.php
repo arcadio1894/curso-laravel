@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Mail\MessageDeleted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class Film extends Model
 {

@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Mail\MessageDeleted;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -40,4 +42,6 @@ class User extends Authenticatable
     protected $dates = [
         'deleted_at'
     ];
+
+    
 }

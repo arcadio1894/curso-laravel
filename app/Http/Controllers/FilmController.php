@@ -253,7 +253,7 @@ class FilmController extends Controller
      */
     public function destroy(Film $film)
     {
-        //
+        
     }
 
     public function estados()

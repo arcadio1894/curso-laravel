@@ -168,6 +168,7 @@ class RentalController extends Controller
         //dd($rental);
         $rental->active = 0;
         $rental->save();
+        // TODO: Lanzar el evento RentalConfirmed
         return json_encode(['value' => true]);
     }
 }
