@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Events\RentalConfirmed;
 use App\Film;
 use App\Rental;
 use App\RentalFilm;
@@ -169,6 +170,8 @@ class RentalController extends Controller
         $rental->active = 0;
         $rental->save();
         // TODO: Lanzar el evento RentalConfirmed
+        event(new RentalConfirmed($rental));
+        
         return json_encode(['value' => true]);
     }
 }
