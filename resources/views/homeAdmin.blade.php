@@ -14,6 +14,8 @@
                         </div>
                     @endif
 
+                    <h3>Colocar botones</h3>
+
 
                 </div>
             </div>
