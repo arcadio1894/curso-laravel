@@ -54,6 +54,8 @@ Route::group(['middleware' => 'my_auth', 'auth'], function() {
     Route::get('/rentals', 'RentalController@index');
     Route::get('/rental/confirmationrental/{rentalId}', 'RentalController@confirmation');
 
+    Route::get('/film/top', 'FilmController@filmTop');
+
 
 });
 Route::get('/category/show/{id}', 'CategoryController@show');
@@ -73,6 +75,10 @@ Route::get('405', ['as'=>'405', 'uses'=>'ErrorHandlerController@errorCode405']);
  * */
 
 Route::post('/email', 'MailController@sendMail');
+
+Route::get('/tests', 'FilmController@tests');
+
+Route::get('/testsEL', 'FilmController@testsEL');
 
 
 

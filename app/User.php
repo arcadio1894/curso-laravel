@@ -21,7 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'role_id', 'avatar'
     ];
-    
+
+    protected $with = ['rentals'];
+
     public function role() {
         return $this->belongsTo('App\Role');
     }

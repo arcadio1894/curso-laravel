@@ -6,9 +6,12 @@ use App\Category;
 use App\CategoryFilm;
 use App\Film;
 use App\FilmState;
+use App\Rental;
 use App\State;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class FilmController extends Controller
@@ -20,7 +23,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        $films = Film::with('categories')->with('states')->get();
+        //$films = Film::with('categories')->with('states')->get();
+        $films = Film::with(['categories', 'states'])->get();
         return view('film.index')->with(compact('films'));
     }
 
@@ -256,6 +260,28 @@ class FilmController extends Controller
         
     }
 
+    public function filmTop()
+    {
+        // TODO: Este codigo obtiene el maximo numero de films alquiladas
+        $result = DB::table('films')
+            ->select(DB::raw('COUNT(rental_films.film_id) as quantity'))
+            ->join('rental_films', 'films.id', '=', 'rental_films.film_id')
+            ->orderBy('quantity','DESC')
+            ->limit('1')
+            ->get();
+        //dd($result[0]->quantity);
+
+        // TODO: Obtiene las peliculas cuya cantidad sea la maxima
+        $result2 = DB::table('films')
+            ->select('films.name', 'films.image', 'films.year', DB::raw('COUNT(rental_films.film_id) as quantity'))
+            ->join('rental_films', 'films.id', '=', 'rental_films.film_id')
+            ->groupBy('films.name', 'films.image', 'films.year')
+            ->havingRaw('quantity = '.$result[0]->quantity)
+            ->get();
+        dd($result2);
+
+    }
+
     public function estados()
     {
         /*$films = Film::with('states')->get();
@@ -288,6 +314,60 @@ class FilmController extends Controller
         }*/
         echo $states[1]->name;
         $carbon = Carbon::now();
+
+    }
+
+    public function tests()
+    {
+        // TODO: Malas practicas
+        // TODO: Primer ejemplo de malas practicas
+        /*$films = Film::all();
+        return view('film.tests')->with(compact('films'));*/
+        
+        // TODO: Segundo ejemplo de malas practicas
+        /*$users = User::all();
+        return view('film.tests')->with(compact('users'));*/
+
+        // TODO: Tercer ejemplo de malas practicas
+        /*$rentals = Rental::all();
+        return view('film.tests')->with(compact('rentals'));*/
+
+        // TODO: Cuarto ejemplo de malas practicas
+        $user = User::where('id', 2)->with('rentals')->orderby('rentals.rental_date')->get();
+        //dd($user);
+        return view('film.tests')->with(compact('user'));
+
+        //dd($films);
+    }
+    public function testsEL()
+    {
+        // TODO: Primer ejemplo de Eager and Lazy loading
+        /*$films = Film::with(['categories', 'states'])->get();
+        return view('film.testsEL')->with(compact('films'));*/
+        
+        // TODO: Segundo ejemplo de Eager and Lazy loading
+        /*$users = User::with(['role'])->get();
+        return view('film.testsEL')->with(compact('users'));*/
+
+        // TODO: Tercer ejemplo de Eager and Lazy loading
+        //$rentals = Rental::with(['user.role'])->get();
+
+        // TODO: Cuarto ejemplo de Eager and Lazy loading
+        $user = User::with('rentals')->find(2);
+        //dd($user);
+
+        // TODO: Quinto ejemplo de Eager and Lazy loading
+        /*$user = User::with(['rentals' => function($query){
+            $query->oldest('rental_date');
+            $query->select('rental_date', 'id');
+        }])->find(2);*/
+
+        // TODO: Sexto ejemplo de Eager and Lazy loading
+        $user = User::find(2);
+
+        //dd($rentals[0]->user->role->name);
+
+        return view('film.testsEL')->with(compact('user'));
 
     }
 }
