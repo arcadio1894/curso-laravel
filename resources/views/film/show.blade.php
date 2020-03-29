@@ -20,11 +20,12 @@
 
 @section('content')
 <div class="container">
+    <div id="owl-demo"></div>
     <div class="row">
         <div class="single-page-agile-info">
             <!-- /movie-browse-agile -->
             <div class="show-top-grids-w3lagile">
-                <div class="col-sm-8 single-left">
+                <div class="col-sm-12">
                     <div class="song">
                         <div class="song-info">
                             <h3>{{ $film->name }}</h3>
@@ -79,7 +80,11 @@
                         </div>
                     </div>
                     <div class="clearfix"> </div>
+
                 </div>
+
+                <my-comments-component v-bind:film_id="{{ json_encode($film->id) }}"></my-comments-component>
+
             </div>
         </div>
     </div>
@@ -89,6 +94,7 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.toast.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/Film/cart.js') }}"></script>
 @endsection

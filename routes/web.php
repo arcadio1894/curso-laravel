@@ -80,6 +80,20 @@ Route::get('/tests', 'FilmController@tests');
 
 Route::get('/testsEL', 'FilmController@testsEL');
 
+// TODO: Rutas para gestionar los comentarios
+
+// TODO: Ruta para listar los comentarios de una pelicula
+Route::get('/comments/{film_id}', 'CommentController@index');
+
+// TODO: Ruta para guardar un comentario
+Route::post('/comments', 'CommentController@store');
+
+// TODO: Ruta para modificar un comentario
+Route::put('/comment/{comment_id}', 'CommentController@update');
+
+// TODO: Ruta para eliminar un comentario
+Route::delete('/comment/{comment_id}', 'CommentController@destroy');
+
 
 
 

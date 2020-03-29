@@ -5,6 +5,7 @@
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="keywords" content="One Movies Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
@@ -44,20 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- start-smoth-scrolling -->
     <link href="{{ asset('user/css/owl.carousel.css')}}" rel="stylesheet" type="text/css" media="all">
     <script src="{{ asset('user/js/owl.carousel.js')}}"></script>
-    <script>
-        $(document).ready(function() {
-            $("#owl-demo").owlCarousel({
 
-                autoPlay: 3000, //Set AutoPlay to 3 seconds
-
-                items : 5,
-                itemsDesktop : [640,5],
-                itemsDesktopSmall : [414,4]
-
-            });
-
-        });
-    </script>
 </head>
 
 <body>
@@ -251,7 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>--}}
-                <div class="container">
+                <div class="container" id="app">
                     <!-- Start Content -->
                 @yield('content')
 
@@ -318,6 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
+
 <script src="{{ asset('user/js/bootstrap.min.js')}}"></script>
 <script>
     $(document).ready(function(){
@@ -332,24 +321,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }
         );
     });
+
 </script>
 <!-- //Bootstrap Core JavaScript -->
 <!-- here stars scrolling icon -->
-<script type="text/javascript">
+{{--<script type="text/javascript">
     $(document).ready(function() {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
-
         $().UItoTop({ easingType: 'easeOutQuart' });
     });
-</script>
-@yield('scripts')
+</script>--}}
 <!-- //here ends scrolling icon -->
+{{--<script>
+    $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                items : 5,
+                itemsDesktop : [640,5],
+                itemsDesktopSmall : [414,4]
+
+            });
+
+    });
+</script>--}}
+@yield('scripts')
 </body>
 </html>
