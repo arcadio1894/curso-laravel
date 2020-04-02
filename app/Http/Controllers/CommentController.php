@@ -25,6 +25,7 @@ class CommentController extends Controller
         $comment->save();
 
         return $comment;
+        // devuelve el comentario creado
 
     }
 
